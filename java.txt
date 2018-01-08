@@ -80,3 +80,60 @@ class Testthrows1{
    System.out.println("normal flow...");  
   }  
 }  
+
+Final is used to apply restrictions on class, method and variable. 
+Final class can't be inherited, 
+final method can't be overridden and final variable value can't be changed.
+Final is a keyword.	
+
+Finally is used to place important code, it will be executed whether exception is handled or not.	
+Finally is a block.
+
+Finalize is used to perform clean up processing just before object is garbage collected.
+Finalize is a method.
+
+class FinalExample{  
+public static void main(String[] args){  
+final int x=100;  
+x=200;//Compile Time Error  
+}}  
+
+class FinalizeExample{  
+public void finalize(){System.out.println("finalize called");}  
+public static void main(String[] args){  
+FinalizeExample f1=new FinalizeExample();  
+FinalizeExample f2=new FinalizeExample();  
+f1=null;  
+f2=null;  
+System.gc();  
+}}  
+
+If you are creating your own Exception that is known as custom exception or user-defined exception. Java custom exceptions are used to customize the exception according to user need.
+
+class InvalidAgeException extends Exception{  
+ InvalidAgeException(String s){  
+  super(s);  
+ }  
+}  
+class TestCustomException1{  
+  
+   static void validate(int age)throws InvalidAgeException{  
+     if(age<18)  
+      throw new InvalidAgeException("not valid");  
+     else  
+      System.out.println("welcome to vote");  
+   }  
+     
+   public static void main(String args[]){  
+      try{  
+      validate(13);  
+      }catch(Exception m){System.out.println("Exception occured: "+m);}  
+  
+      System.out.println("rest of the code...");  
+  }  
+}  
+
+Output:Exception occured: InvalidAgeException:not valid
+       rest of the code...
+       
+
