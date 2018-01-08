@@ -1,0 +1,127 @@
+What is log4j?
+=--> log4j is a reliable, fast and flexible logging framework (APIs) written in Java. 
+
+log4j has three main components:
+=--> 
+	loggers: Responsible for capturing logging information.
+	appenders: Responsible for publishing logging information to various preferred destinations.
+	layouts: Responsible for formatting logging information in different styles.
+    
+log4j Features:
+	It is thread-safe.
+	It is optimized for speed.
+	It is based on a named logger hierarchy.
+	It supports multiple output appenders per logger.
+	It supports internationalization.
+	It is not restricted to a predefined set of facilities.
+	Logging behavior can be set at runtime using a configuration file.
+	It is designed to handle Java Exceptions from the start.
+	It uses multiple levels, namely ALL, TRACE, DEBUG, INFO, WARN, ERROR and FATAL.
+	The format of the log output can be easily changed by extending the Layout class.
+	The target of the log output as well as the writing strategy can be altered by implementations of the Appender interface.
+	It is fail-stop. However, although it certainly strives to ensure delivery, log4j does not guarantee that each log statement will be 		delivered to its destination.
+	
+Pros and Cons of Logging:
+	Logging is an important component of the software development. A well-written logging code offers quick debugging, easy maintenance, 		and structured storage of an application's runtime information.
+
+	Logging does have its drawbacks also. It can slow down an application. If too verbose, it can cause scrolling blindness. To alleviate 		these concerns, log4j is designed to be reliable, fast and extensible.
+
+	Since logging is rarely the main focus of an application, the log4j API strives to be simple to understand and to use.
+
+Layout types of log4j:
+=-->
+	DateLayout
+	HTMLLayout
+	PatternLayout
+	SimpleLayout
+	XMLLayout
+
+There are two types of objects available with log4j framework:
+=-->
+	Core Objects: These are mandatory objects of the framework. They are required to use the framework.
+	Support Objects: These are optional objects of the framework. They support core objects to perform additional but important tasks.
+
+-> Core objects include the following types of objects −
+
+	- Logger Object
+	  The top-level layer is the Logger which provides the Logger object. The Logger object is responsible for capturing logging 		  information and they are stored in a namespace hierarchy.
+
+	- Layout Object
+	  The layout layer provides objects which are used to format logging information in different styles. It provides support to appender 		  objects before publishing logging information.
+
+	  Layout objects play an important role in publishing logging information in a way that is human-readable and reusable.
+
+	- Appender Object
+	  This is a lower-level layer which provides Appender objects. The Appender object is responsible for publishing logging information 		  to various preferred destinations such as a database, file, console, UNIX Syslog, etc.
+
+There are other important objects in the log4j framework that play a vital role in the logging framework:
+=-->
+	- Level Object
+	  The Level object defines the granularity and priority of any logging information. There are seven levels of logging defined within 		  the API: OFF, DEBUG, INFO, ERROR, WARN, FATAL, and ALL.
+
+	- Filter Object
+	  The Filter object is used to analyze logging information and make further decisions on whether that information should be logged or 		  not.
+
+	  An Appender objects can have several Filter objects associated with them. If logging information is passed to a particular Appender 		  object, all the Filter objects associated with that Appender need to approve the logging information before it can be published to 		  the attached destination.
+
+	- ObjectRenderer
+	  The ObjectRenderer object is specialized in providing a String representation of different objects passed to the logging framework. 		  This object is used by Layout objects to prepare the final logging information.
+
+	- LogManager
+	  The LogManager object manages the logging framework. It is responsible for reading the initial configuration parameters from a 		  system-wide configuration file or a configuration class.
+
+
+Sample Program of log4j
+=-->
+import org.apache.log4j.Logger;
+import java.io.*;
+import java.sql.SQLException;
+import java.util.*;
+
+public class log4jExample{
+
+   /* Get actual class name to be printed on */
+   static Logger log = Logger.getLogger(log4jExample.class.getName());
+   
+   public static void main(String[] args)throws IOException,SQLException{
+      log.debug("Hello this is a debug message");
+      log.info("Hello this is an info message");
+   }
+}
+
+Rule of log4j: ALL < DEBUG < INFO < WARN < ERROR < FATAL < OFF
+
+ALL	All levels including custom levels.
+DEBUG	Designates fine-grained informational events that are most useful to debug an application.
+ERROR	Designates error events that might still allow the application to continue running.
+FATAL	Designates very severe error events that will presumably lead the application to abort.
+INFO	Designates informational messages that highlight the progress of the application at coarse-grained level.
+OFF	The highest possible rank and is intended to turn off logging.
+TRACE	Designates finer-grained informational events than the DEBUG.
+WARN	Designates potentially harmful situations.
+
+FileConfiguration
+
+immediateFlush	This flag is by default set to true, which means the output stream to the file being flushed with each append operation.
+encoding	It is possible to use any character-encoding. By default, it is the platform-specific encoding scheme.
+threshold	The threshold level for this appender.
+Filename	The name of the log file.
+fileAppend	This is by default set to true, which means the logging information being appended to the end of the same file.
+bufferedIO	This flag indicates whether we need buffered writing enabled. By default, it is set to false.
+bufferSize	If buffered I/O is enabled, it indicates the buffer size. By default, it is set to 8kb.
+maxFileSize	This is the critical size of the file above which the file will be rolled. Default value is 10 MB.
+maxBackupIndex	This property denotes the number of backup files to be created. Default value is 1.
+
+DatePattern	This indicates when to roll over the file and the naming convention to be followed. By default, roll over is performed at midnight each day.
+
+DatePattern controls the rollover schedule using one of the following patterns:
+
+DatePattern		Description
+'.' yyyy-MM		Roll over at the end of each month and at the beginning of the next month.
+'.' yyyy-MM-dd		Roll over at midnight each day. This is the default value.
+'.' yyyy-MM-dd-a	Roll over at midday and midnight of each day.
+'.' yyyy-MM-dd-HH	Roll over at the top of every hour.
+'.' yyyy-MM-dd-HH-mm	Roll over every minute.
+'.' yyyy-ww		Roll over on the first day of each week depending upon the locale.
+
+

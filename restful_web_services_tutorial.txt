@@ -1,0 +1,93 @@
+Web service is a technology to communicate one programming language with another. For example, java programming language can interact with PHP and .Net by using web services. In other words, web service provides a way to achieve interoperability.
+
+A Web Service can be defined by following ways:
+ - is a client server application or application component for communication.
+ - method of communication between two devices over network.
+ - is a software system for interoperable machine to machine communication.
+ - is a collection of standards or protocols for exchanging information between two devices or application.
+ 
+There are mainly two types of web services.
+ - SOAP web services
+ - RESTful web services
+
+There are three major web service components.
+ - SOAP (Simple Object Access Protocol)
+ - WSDL (Web Services Description Language)
+    - WSDL is a xml document containing information about web services such as method name, method parameter and how to access it.
+    - WSDL is a part of UDDI. It acts as a interface between web service applications.
+ - UDDI (Universal Description, Discovery and Integration)
+    - UDDI is a XML based framework for describing, discovering and integrating web services.
+    - UDDI is a directory of web service interfaces described by WSDL, containing information about web services.
+
+Why web services?
+
+ - Exposing the Existing Function on the network
+    	- A web service is a unit of managed code that can be remotely invoked using HTTP, that is, it can be activated using HTTP requests. 		  Web services allows you to expose the functionality of your existing code over the network. Once it is exposed on the network, other 		  application can use the functionality of your program.
+
+ - Interoperability
+	- Web services allow various applications to talk to each other and share data and services among themselves. Other applications can 		  also use the web services. For example, a VB or .NET application can talk to Java web services and vice versa. Web services are used 		  to make the application platform and technology independent.
+
+ - Standardized Protocol
+	- Web services use standardized industry standard protocol for the communication. All the four layers (Service Transport, XML 		  Messaging, Service Description, and Service Discovery layers) use well-defined protocols in the web services protocol stack. This 		  standardization of protocol stack gives the business many advantages such as a wide range of choices, reduction in the cost due to 		  competition, and increase in the quality.
+
+ - Low Cost Communication
+	- Web services use SOAP over HTTP protocol, so you can use your existing low-cost internet for implementing web services. This 		  solution is much less costly compared to proprietary solutions like EDI/B2B. Besides SOAP over HTTP, web services can also be 	  implemented on other reliable transport mechanisms like FTP.
+
+SOAP Web Services
+ - SOAP stands for Simple Object Access Protocol. It is a XML-based protocol for accessing web services.
+ - SOAP is a W3C recommendation for communication between two applications.
+ - SOAP is XML based protocol. It is platform independent and language independent. By using SOAP, you will be able to interact with other programming language applications.
+
+Advantages of Soap Web Services
+ - WS Security: SOAP defines its own security known as WS Security.
+ - Language and Platform independent: SOAP web services can be written in any programming language and executed in any platform.
+
+Disadvantages of Soap Web Services
+ - Slow: SOAP uses XML format that must be parsed to be read. It defines many standards that must be followed while developing the SOAP applications. So it is slow and consumes more bandwidth and resource.
+ - WSDL dependent: SOAP uses WSDL and doesn't have any other mechanism to discover the service.
+
+RESTful Web Services
+ - REST stands for REpresentational State Transfer.
+ - REST is an architectural style not a protocol.
+
+Advantages of RESTful Web Services
+ - Fast: RESTful Web Services are fast because there is no strict specification like SOAP. It consumes less bandwidth and resource.
+ - Language and Platform independent: RESTful web services can be written in any programming language and executed in any platform.
+ - Can use SOAP: RESTful web services can use SOAP web services as the implementation.
+ - Permits different data format: RESTful web service permits different data format such as Plain Text, HTML, XML and JSON.
+
+There are two main API's defined by Java for developing web service applications since JavaEE 6.
+ - 1) JAX-WS: for SOAP web services. The are two ways to write JAX-WS application code: by RPC style and Document style.
+ - 2) JAX-RS: for RESTful web services. There are mainly 2 implementation currently in use for creating JAX-RS application: Jersey and RESTeasy.
+
+	JAVA web services API
+		/\
+	       /  \
+	      /    \
+	  JAX-WS  JAX-RS
+	  (SOAP)  (RESTful)
+	    /\	      /\
+	   /  \	     /  \
+	  /    \    /    \
+    Document  RPC Jersey RESTeasy
+      Style  Style
+      
+JAX-RS:
+Annotation	Description
+----------	-----------
+Path		It identifies the URI path. It can be specified on class or method.
+PathParam	represents the parameter of the URI path.
+GET		specifies method responds to GET request.
+POST		specifies method responds to POST request.
+PUT		specifies method responds to PUT request.
+HEAD		specifies method responds to HEAD request.
+DELETE		specifies method responds to DELETE request.
+OPTIONS		specifies method responds to OPTIONS request.
+FormParam	represents the parameter of the form.
+QueryParam	represents the parameter of the query string of an URL.
+HeaderParam	represents the parameter of the header.
+CookieParam	represents the parameter of the cookie.
+Produces	defines media type for the response such as XML, PLAIN, JSON etc. It defines the media type that the methods of a resource 			class or MessageBodyWriter can produce.
+Consumes	It defines the media type that the methods of a resource class or MessageBodyReader can produce.
+
+
