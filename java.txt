@@ -1,0 +1,82 @@
+Static
+it is used for memory efficiency. At the time of class loading only, it allocates memory. 
+class counter {
+   static int i = 0; //without static it will display: 1 1 1
+   counter() {
+   	i++;
+   	System.out.println(i);
+   }
+   public static void main() {
+       counter cnt1 = new counter();
+       counter cnt2 = new counter();
+       counter cnt3 = new counter();
+   }
+}
+for static method, jvm doesn't need to create object. If it is non static method, then jvm first creates object, and for that case it will lead problem of extra memory allocation.
+
+We can execute a program without main method. One of the way is static block.
+
+class A3 {  
+   static {  
+      System.out.println("static block is invoked");  
+      System.exit(0);  
+   }  
+}
+
+public class TestThrow1{  
+   static void validate(int age){  
+     if(age<18)  
+      throw new ArithmeticException("not valid");  
+     else  
+      System.out.println("welcome to vote");  
+   }  
+   public static void main(String args[]){  
+      validate(13);  
+      System.out.println("rest of the code...");  
+  }  
+}
+
+class TestExceptionPropagation1{  
+  void m(){  
+    int data=50/0;  
+  }  
+  void n(){  
+    m();  
+  }  
+  void p(){  
+   try{  
+    n();  
+   }catch(Exception e){System.out.println("exception handled");}  
+  }  
+  public static void main(String args[]){  
+   TestExceptionPropagation1 obj=new TestExceptionPropagation1();  
+   obj.p();  
+   System.out.println("normal flow...");  
+  }  
+}  
+
+Java throw keyword is used to explicitly throw an exception.	Java throws keyword is used to declare an exception.
+Checked exception cannot be propagated using throw only.	Checked exception can be propagated with throws.
+Throw is followed by an instance.				Throws is followed by class.
+Throw is used within the method.				Throws is used with the method signature.
+You cannot throw multiple exceptions.				You can declare multiple exceptions e.g.
+									public void method() throws IOException,SQLException.
+import java.io.IOException;  
+class Testthrows1{  
+  void m()throws IOException{  
+    throw new IOException("device error");//checked exception  
+  }  
+  void n()throws IOException{  
+    m();  
+  }  
+  void p(){  
+   try{  
+    n();  
+   }catch(Exception e){System.out.println("exception handled");}  
+  }  
+  public static void main(String args[]){  
+   Testthrows1 obj=new Testthrows1();  
+   obj.p();  
+   System.out.println("normal flow...");  
+  }  
+}  
